@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript Mini Çalışma Projeleri</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 10px;
+            background: #f9f9f9;
+        }
+
+        section {
+            background: rgba(212, 114, 114, 0.521);
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        p:empty {
+            display: none;
+        }
+
+        p {
+            margin-top: 15px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #2c3e50;
+            background-color: #f1f1f1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: inline-block;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        h2 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0 4px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 8px 14px;
+            border: none;
+            background-color: #a10701;
+            color: white;
+            font-size: 1em;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #01b991;
+        }
+
+        .result {
+            margin-top: 12px;
+            font-weight: bold;
+            color: #222;
+            min-height: 1.5em;
+        }
+
+        .sonuc-mesaj {
+            margin-bottom: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            text-shadow: #2222226c 1px 1px 1px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .kirmizi {
+            color: #fff;
+            background-color: #e53935;
+        }
+
+        .turuncu {
+            color: #fff;
+            background-color: #f9a825;
+        }
+
+        .acikYesil {
+            color: #fff;
+            background-color: #66bb6a;
+        }
+
+        .yesil {
+            color: #fff;
+            background-color: #2e7d32;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="calisma1">
+        <h2>1. Sınav Notu Değerlendirme</h2>
+        <label for="notInput">Notunuzu giriniz (0-100):</label>
+        <input type="number" id="notInput" min="0" max="100" />
+        <button id="notKontrolBtn" onclick="notuDegerlendir()">Notu Kontrol Et</button>
+        <p id="p1"></p>
+        <div class="result" id="notSonuc"></div>
+    </section>
+
+    <section id="calisma2">
+        <h2>2. Yaş Hesaplama Fonksiyonu</h2>
+        <label for="dogumYili">Doğum yılınızı giriniz:</label>
+        <input type="number" id="dogumYili" placeholder="Orn: 2000" />
+        <button onclick="yasHesapla()">Yaşı Hesapla</button>
+        <p id="yasSonuc"></p>
+    </section>
+
+    <section id="calisma3">
+        <h2>3. En Küçük Sayıyı Bulma</h2>
+        <label for="sayi1">1. Sayı:</label>
+        <input type="number" id="sayi1"><br><br>
+        <label for="sayi2">2. Sayı:</label>
+        <input type="number" id="sayi2"><br><br>
+        <label for="sayi3">3. Sayı:</label>
+        <input type="number" id="sayi3"><br><br>
+        <button onclick="enKucuguBul()">En Küçük Sayıyı Göster</button>
+        <p id="enKucukSonuc"></p>
+    </section>
+
+    <section id="calisma4">
+        <h2>4. 10 Adet İsim Girişi ve Listeleme</h2>
+        <label id="isimEtiket">1. ismi giriniz:</label>
+        <input type="text" id="isimInput" placeholder="İsim giriniz" />
+        <button onclick="isimEkle()">Ekle</button>
+        <div id="isimSonuc"></div>
+    </section>
+
+    <section id="calisma5">
+        <h2>5. 1-50 Arası Çift Sayıları Listele</h2>
+        <button onclick="ciftleriListele()">Listele</button>
+        <div id="ciftSonuc"></div>
+    </section>
+
+    <section id="calisma6">
+        <h2>6. 1-100 Arası 3 ve 5'e Tam Bölünen Sayılar</h2>
+        <button onclick="ucveBesBolunenleriListele()">Listele</button>
+        <div id="ucbesSonuc"></div>
+    </section>
+
+    <section id="calisma7">
+        <h2>7. Metni Belirtilen Adet Kadar Yazdırma</h2>
+        <label for="metinInput">Metin giriniz:</label>
+        <input type="text" id="metinInput" />
+        <label for="adetInput">Kaç kere yazdırılsın?</label>
+        <input type="number" id="adetInput" min="1" />
+        <button onclick="metniYazdir()">Yazdır</button>
+        <div id="metinSonuc"></div>
+    </section>
+
+    <section id="calisma8">
+        <h2>8. Parametreli Fonksiyon ile İsim Yazdırma</h2>
+        <label for="isimInput">İsminizi Yazınız</label>
+        <input type="text" id="isimInput" />
+        <button id="isimYazdirBtn">İsim Yazdır</button>
+        <div class="result" id="isimYazdirSonuc"></div>
+    </section>
+
+    <script>
+        //Çalışma - 1
+        //Kullanıcıdan sınav notu girmesini isteyen ve girilen notun 100 lük sistemde girilen not (0-44)Başarısız, (45-54) geçer,(55-69) orta, (70-84)iyi, (85,100) pekiyi seçeneklerinden denk gelen aralıktaki değeri ekrana yazdıran kullanıcı 100 den ve 0 dan küçük sayı girerse geçersiz not girdiniz uyarısı gösteren javascript kodları 
+        function notuDegerlendir() {
+            const not = parseInt(document.getElementById("notInput").value);
+            let mesaj = "";
+            let renkSinifi = "";
+
+            if (isNaN(not) || not < 0 || not > 100) {
+                mesaj = "Geçersiz not girdiniz";
+                renkSinifi = "kirmizi";
+            } else if (not <= 44) {
+                mesaj = "Başarısız";
+                renkSinifi = "kirmizi";
+            } else if (not <= 54) {
+                mesaj = "Geçer";
+                renkSinifi = "turuncu";
+            } else if (not <= 69) {
+                mesaj = "Orta";
+                renkSinifi = "acikYesil";
+            } else if (not <= 84) {
+                mesaj = "İyi";
+                renkSinifi = "yesil";
+            } else {
+                mesaj = "Pekiyi";
+                renkSinifi = "yesil";
+            }
+            p1.className = "";
+            p1.textContent = mesaj;
+            p1.classList.add("sonuc-mesaj", renkSinifi);
+            document.getElementById("p1").innerHTML = mesaj;
+            document.getElementById("notInput").value = "";
+        }
+
+        // Çalışma - 2
+        //Çağrılırken doğum yılını parametre olarak alan ve bununla yaş hesaplayıp consola kaç yaşında olduğumuzu yazan bir fonksiyon oluşturulım.
+
+        function yasHesapla() {
+            const dogumYili = parseInt(document.getElementById("dogumYili").value);
+            const bugun = new Date().getFullYear();
+
+            if (isNaN(dogumYili) || dogumYili < 1900 || dogumYili > bugun) {
+                document.getElementById("yasSonuc").innerText = "Lütfen geçerli bir doğum yılı giriniz.";
+                return;
+            }
+            const yas = bugun - dogumYili;
+            console.log(`Yaşınız: ${yas}`);
+            document.getElementById("yasSonuc").innerText = `Yaşınız: ${yas}`;
+            document.getElementById("dogumYili").value = "";
+        }
+
+        //Çalışma - 3
+        //Kullanıcının girdiği 3 sayıdan en küçüğünü ekrana yazan javascript kodunu yazınız. 
+        function enKucuguBul() {
+            const s1 = parseFloat(document.getElementById("sayi1").value);
+            const s2 = parseFloat(document.getElementById("sayi2").value);
+            const s3 = parseFloat(document.getElementById("sayi3").value);
+
+            if (isNaN(s1) || isNaN(s2) || isNaN(s3)) {
+                document.getElementById("enKucukSonuc").innerText = "Lütfen tüm sayıları giriniz.";
+                return;
+            }
+            const enKucuk = Math.min(s1, s2, s3);
+            document.getElementById("enKucukSonuc").innerText = `En küçük sayı: ${enKucuk}`;
+            console.log("En küçük sayı:", enKucuk);
+            document.getElementById("sayi1").value = "";
+            document.getElementById("sayi2").value = "";
+            document.getElementById("sayi3").value = "";
+
+        }
+        //Çalışma - 4
+        //Kullanıcının girdiği 10 adet ismi bir dizide tutan ve sonrada bu diziyi sırayla ekrana yazdıran JavaScript kodları
+
+        const isimler = [];
+        function isimEkle() {
+            const input = document.getElementById("isimInput");
+            const etiket = document.getElementById("isimEtiket");
+            const sonuc = document.getElementById("isimSonuc");
+            const isim = input.value.trim();
+
+            if (isim) {
+                isimler.push(isim);
+                input.value = "";
+                if (isimler.length < 10) {
+                    etiket.textContent = `${isimler.length + 1}. ismi giriniz:`;
+                } else {
+                    input.disabled = true;
+                    document.querySelector('#calisma4 button').disabled = true;
+
+                    // İsimleri liste olarak göster
+                    let html = "<h4>Girilen İsimler:</h4><ul>";
+                    isimler.forEach((ad, index) => {
+                        html += `<li>${index + 1}. ${ad}</li>`;
+                    });
+                    html += "</ul>";
+                    sonuc.innerHTML = html;
+                }
+            }
+        }
+
+        //Çalışma - 5
+        //1-50 arası sayılardan çift olanları ekranda listeleyen JavaScript kodları. 
+        function ciftleriListele() {
+            const sonucDiv = document.getElementById("ciftSonuc");
+            let sonucHTML = "<h4>Çift Sayılar:</h4><ul>";
+
+            for (let i = 1; i <= 50; i++) {
+                if (i % 2 === 0) {
+                    sonucHTML += `<li>${i}</li>`;
+                }
+            }
+            sonucHTML += "</ul>";
+            sonucDiv.innerHTML = sonucHTML;
+        }
+
+        //Çalışma - 6
+        //1-100 arası sayılardan 3’e ve 5’e tam bölünen sayıları listeleme.
+        function ucveBesBolunenleriListele() {
+            const sonucDiv = document.getElementById("ucbesSonuc");
+            let sonucHTML = "<h4>3 ve 5'e Tam Bölünen Sayılar:</h4><ul>";
+
+            for (let i = 1; i <= 100; i++) {
+                if (i % 3 === 0 && i % 5 === 0) {
+                    sonucHTML += `<li>${i}</li>`;
+                }
+            }
+            sonucHTML += "</ul>";
+            sonucDiv.innerHTML = sonucHTML;
+        }
+
+        //Çalışma - 7
+        //Kullanıcıdan metin girmesini isteyelim ve gene kullanıcıya ekrana kaç kere yazmak istediğini soralım. Kullanıcının girdiği metni yine kullanıcının girdiği adet kadar ekranda yazdıran JavaScript kodları
+
+        function metniYazdir() {
+            const metin = document.getElementById("metinInput").value.trim();
+            const adet = parseInt(document.getElementById("adetInput").value);
+            const sonucUl = document.getElementById("metinSonuc");
+
+            if (metin === "" || isNaN(adet) || adet < 1) {
+                sonucUl.innerHTML = "<li style='color:red;'>Lütfen geçerli bir metin ve sayı giriniz.</li>";
+                return;
+            }
+            let cikti = "";
+            for (let i = 0; i < adet; i++) {
+                cikti += "<li>" + metin + "</li>";
+            }
+            sonucUl.innerHTML = cikti;
+        }
+
+        //Çalışma - 8
+        //Parametreli bir fonksiyon hazırlayalım. Bu fonksiyon parametre olarak girilen sayı kadar ekrana kullanıcıdan alınan ismi yazdırsın. Yani kullanıcıya fonksiyon içinde adını bir kere soralım bu adı fonksiyonu çağırırken belirttiğimiz parametre değeri kadar ekrana yazdıralım
+
+        const section = document.getElementById("calisma8");
+        const input = section.querySelector("#isimInput");
+        const button = section.querySelector("#isimYazdirBtn");
+        const sonuc = section.querySelector("#isimYazdirSonuc");
+
+        function isimYazdir(kacKere) {
+            const isim = input.value.trim();
+            sonuc.innerHTML = "";
+
+            if (isim === "") {
+                sonuc.innerHTML = "<p style='color: red;'>Lütfen isminizi giriniz.</p>";
+                return;
+            }
+            const ul = document.createElement("ul");
+            for (let i = 0; i < kacKere; i++) {
+                const li = document.createElement("li");
+                li.textContent = isim;
+                ul.appendChild(li);
+            }
+            sonuc.appendChild(ul);
+        }
+
+        button.addEventListener("click", function () {
+            isimYazdir(5); //  5 kere yazdır
+        });
+    </script>
+</body>
+
+</html>
